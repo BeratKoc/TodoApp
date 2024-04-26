@@ -1,22 +1,28 @@
-export class Model{
-    user;
-    items;
+// model.ts
+export class Model {
+  user: string;
+  items: TodoItem[];
 
-    constructor(){
-        this.user="Ahmet",
-        this.items =[
-            new TodoItem("Kahvalti",false),
-            new TodoItem("Kitap Okumak",false),
-            new TodoItem("Sinema",false),
-          ];
-    }
+  constructor() {
+    this.user = 'Ahmet';
+    // Retrieve items from local storage if available, otherwise initialize as empty array
+    this.items = JSON.parse(localStorage.getItem('todoItems') || '[]').map(
+      (item: any) => new TodoItem(item.description, item.action)
+    );
+  }
+
+  saveItems() {
+    // Save items to local storage
+    localStorage.setItem('todoItems', JSON.stringify(this.items));
+  }
 }
 
-export class TodoItem{
-    description:string;
-    action:boolean;
-    constructor(description:string,action:boolean){
-        this.description=description;
-        this.action=action;
-    }
+export class TodoItem {
+  description: string;
+  action: boolean;
+
+  constructor(description: string, action: boolean) {
+    this.description = description;
+    this.action = action;
+  }
 }
