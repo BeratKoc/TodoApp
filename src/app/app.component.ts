@@ -1,4 +1,3 @@
-// app.component.ts
 import { Component } from '@angular/core';
 import { Model, TodoItem } from './model';
 import { throwError } from 'rxjs';
@@ -33,4 +32,8 @@ export class AppComponent {
     }
 
   }
+  deleteItem(index: number) {
+    this.model.items.splice(index, 1); // İndexe göre öğeyi listeden kaldır
+    localStorage.setItem('todoItems', JSON.stringify(this.model.items)); // Değişikliği local storage'a kaydet
+}
 }

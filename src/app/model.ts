@@ -1,4 +1,3 @@
-// model.ts
 export class Model {
   user: string;
   items: TodoItem[];
