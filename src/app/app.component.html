@@ -2,10 +2,9 @@
   <div class=" justify-content-center flex-column"></div>
   <h3 class="bg-secondary text-white p-3">{{getName()}} TODO LIST</h3>
   <div class="input-group">
-      <input type="text" #todoItem class="form-control">
+      <input type="text" #todoItem [(ngModel)]="todoItemValue" class="form-control">
       <div class="input-group-append">
-          <button class="btn btn-secondary m-3" (click)="addItem(todoItem.value)">Add</button>
-
+          <button class="btn btn-secondary m-3" (click)="addItem(todoItem.value);todoItemValue='';" >Add</button>
       </div>
 
 
